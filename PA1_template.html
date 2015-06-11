@@ -315,7 +315,7 @@ max &lt;- subset(as5, steps==max(as5$steps))
 
 <h2>Inputing missing values</h2>
 
-<p>Note that there are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce bias into some calculations or summaries of the data.</p>
+<p>There are a number of days/intervals where there are missing values (coded as NA). The presence of missing days may introduce bias into some calculations or summaries of the data.</p>
 
 <ol>
 <li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)</li>
@@ -380,11 +380,15 @@ head(as2)
 
 <pre><code class="r">daily_mean2 &lt;- mean(as2$daily_steps, na.rm = TRUE)
 daily_median2 &lt;- median(as2$daily_steps, na.rm = TRUE)
+mean_diff &lt;- daily_mean2 - daily_mean
+median_diff &lt;- daily_median2 - daily_median
 </code></pre>
 
-<p>Daily mean number of steps, after filling in missing values, is <strong>9382.617</strong>, compared to <strong>10766.19</strong> when just ignoring missing values.</p>
+<p>Daily mean number of steps, after filling in missing values, is <strong>9383</strong>, compared to <strong>10766</strong> when just ignoring missing values.<br/>
+Impact of missing data strategy on the mean is a difference of <strong>-1384</strong></p>
 
-<p>The median number of daily steps, after filling in missing values, is <strong>10395</strong>, compared to <strong>10765</strong> when just ignoring missing values.</p>
+<p>The median number of daily steps, after filling in missing values, is <strong>10395</strong>, compared to <strong>10765</strong> when just ignoring missing values.<br/>
+Impact of missing data strategy on the median is a difference of <strong>-370</strong></p>
 
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 
@@ -396,7 +400,7 @@ daily_median2 &lt;- median(as2$daily_steps, na.rm = TRUE)
 </code></pre>
 
 <ol>
-<li>Make a panel plot containing a time series plot (i.e. type = &ldquo;l&rdquo;) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.</li>
+<li>Make a panel plot containing a time series plot (i.e. type = &ldquo;l&rdquo;) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). </li>
 </ol>
 
 <pre><code class="r">as2_grouped &lt;- summarise(group_by(a2, daytype, interval), steps = mean(steps))
